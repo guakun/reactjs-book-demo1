@@ -1,18 +1,10 @@
-class LikeButton {
+class LikeButton extends Component {
   constructor() {
+    super()
     this.state = {isLiked: false}
   }
 
-  setState(state) {
-    const oldEl = this.el
-    this.state = state
-    this.el = this.render()
-    if (this.onStateChange) {
-      this.onStateChange(oldEl, this.el)
-    }
-  }
-
-  changeLikeText() {
+  onClick() {
     this.setState({
       isLiked: !this.state.isLiked
     })
@@ -27,21 +19,10 @@ class LikeButton {
   </svg>
 </button>
       `
-    this.el = createDOMFromString(domString)
-    this.el.addEventListener('click', () => {
-      this.changeLikeText()
-    }, false)
-    return this.el
+    return domString
   }
 }
 
 const el = document.querySelector('#app')
-const likeButton1 = new LikeButton()
-el.appendChild(likeButton1.render())
-likeButton1.onStateChange = (oldEl, newEl) => {
-  el.insertBefore(newEl, oldEl)
-  el.removeChild(oldEl)
-}
+mount(new LikeButton(), el)
 
-const likeButton2 = new LikeButton()
-el.appendChild(likeButton2.render())
