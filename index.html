@@ -8,7 +8,11 @@
   <title>reactjs</title>
 </head>
 <style>
-  * {margin: 0; padding: 0; box-sizing: border-box;}
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
 </style>
 <style>
   :root {
@@ -21,7 +25,10 @@
     --border-color: #999;
     --border-color-hover: #666;
   }
-  #app { margin: 20px ; }
+
+  #app {
+    margin: 20px;
+  }
 </style>
 <style>
   .g-button {
@@ -64,6 +71,16 @@
   }
 
   class LikeButton {
+    constructor() {
+      this.state = {isLiked: false}
+    }
+
+    changeLikeText() {
+      const likeText = this.el.querySelector('.like-text')
+      this.state.isLiked = !this.state.isLiked
+      likeText.innerHTML = this.state.isLiked ? '取消' : '点赞'
+    }
+
     render() {
       const domString = `
  <button class="g-button like-button">
@@ -75,13 +92,7 @@
       `
       this.el = createDOMFromString(domString)
       this.el.addEventListener('click', () => {
-        console.log('click')
-        // isLiked = !isLiked
-        // if (isLiked) {
-        //   buttonText.innerHTML = '取消'
-        // } else {
-        //   buttonText.innerHTML = '点赞'
-        // }
+        this.changeLikeText()
       }, false)
       return this.el
     }
