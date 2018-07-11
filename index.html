@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="zh-Hans">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>reactjs</title>
+</head>
+<style>
+  :root {
+    --button-height: 32px;
+    --button-bg: white;
+    --button-active-bg: #eee;
+    --font-size: 14px;
+    --border-radius: 4px;
+    --color: #999;
+    --border-color: #999;
+    --border-color-hover: #666;
+  }
+</style>
+<style>
+  .g-button {
+    font-size: var(--font-size);
+    height: var(--button-height);
+    padding: 0 1em;
+    border-radius: var(--border-radius);
+    border: 1px solid var(--border-color);
+    background: var(--button-bg);
+  }
+
+  .g-button:hover {
+    border-color: var(--border-color-hover);
+  }
+
+  .g-button:active {
+    background: var(--button-active-bg);
+  }
+
+  .g-button:focus {
+    outline: none;
+  }
+</style>
+<style>
+  .icon {
+    width: 1em;
+    height: 1em;
+  }
+</style>
+<body>
+
+<button class="g-button like-button">
+  <span class="like-text">点赞</span>
+  <svg class="icon">
+    <use xlink:href="#i-like"></use>
+  </svg>
+</button>
+<button class="g-button">
+  取消
+  <svg class="icon">
+    <use xlink:href="#i-like"></use>
+  </svg>
+</button>
+
+<script>
+  const button = document.querySelector('.like-button')
+  const buttonText = button.querySelector('.like-text')
+  let isLiked = false
+  button.addEventListener('click', () => {
+    isLiked = !isLiked
+    if (isLiked) {
+      buttonText.innerHTML = '取消'
+    } else {
+      buttonText.innerHTML = '点赞'
+    }
+  }, false)
+</script>
+
+<script src="//at.alicdn.com/t/font_743526_tj9jdf47fvp.js"></script>
+</body>
+</html>
