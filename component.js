@@ -1,4 +1,9 @@
 class Component {
+
+  constructor(props = {}) {
+    this.props = props
+  }
+
   setState(state) {
     const oldEl = this.el
     this.state = state

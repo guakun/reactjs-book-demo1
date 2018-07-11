@@ -1,6 +1,6 @@
 class LikeButton extends Component {
-  constructor() {
-    super()
+  constructor(props) {
+    super(props)
     this.state = {isLiked: false}
   }
 
@@ -12,7 +12,7 @@ class LikeButton extends Component {
 
   render() {
     const domString = `
- <button class="g-button like-button">
+ <button class="g-button like-button" style="background: ${this.props.bgColor}">
   <span class="like-text">${this.state.isLiked ? '取消' : '点赞'}</span>
   <svg class="icon">
     <use xlink:href="#i-like"></use>
@@ -25,4 +25,5 @@ class LikeButton extends Component {
 
 const el = document.querySelector('#app')
 mount(new LikeButton(), el)
+mount(new LikeButton({bgColor: '#ddd'}), el)
 
