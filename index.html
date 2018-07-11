@@ -8,6 +8,9 @@
   <title>reactjs</title>
 </head>
 <style>
+  * {margin: 0; padding: 0; box-sizing: border-box;}
+</style>
+<style>
   :root {
     --button-height: 32px;
     --button-bg: white;
@@ -18,6 +21,7 @@
     --border-color: #999;
     --border-color-hover: #666;
   }
+  #app { margin: 20px ; }
 </style>
 <style>
   .g-button {
@@ -52,9 +56,16 @@
 <div id="app"></div>
 
 <script>
+  // ::string => ::dom
+  const createDOMFromString = (domString) => {
+    const div = document.createElement('div')
+    div.innerHTML = domString
+    return div
+  }
+
   class LikeButton {
     render() {
-      return `
+      const domString = `
  <button class="g-button like-button">
   <span class="like-text">点赞</span>
   <svg class="icon">
@@ -62,21 +73,27 @@
   </svg>
 </button>
       `
+      this.el = createDOMFromString(domString)
+      this.el.addEventListener('click', () => {
+        console.log('click')
+        // isLiked = !isLiked
+        // if (isLiked) {
+        //   buttonText.innerHTML = '取消'
+        // } else {
+        //   buttonText.innerHTML = '点赞'
+        // }
+      }, false)
+      return this.el
     }
   }
 
   const el = document.querySelector('#app')
   const likeButton1 = new LikeButton()
-  el.innerHTML = likeButton1.render()
+  el.appendChild(likeButton1.render())
 
-  // button.addEventListener('click', () => {
-  //   isLiked = !isLiked
-  //   if (isLiked) {
-  //     buttonText.innerHTML = '取消'
-  //   } else {
-  //     buttonText.innerHTML = '点赞'
-  //   }
-  // }, false)
+  const likeButton2 = new LikeButton()
+  el.appendChild(likeButton2.render())
+
 </script>
 
 <script src="//at.alicdn.com/t/font_743526_tj9jdf47fvp.js"></script>
