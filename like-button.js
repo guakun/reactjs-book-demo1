@@ -23,7 +23,6 @@ class LikeButton extends Component {
   }
 }
 
-const el = document.querySelector('#app')
 mount(new LikeButton(), el)
 mount(new LikeButton({bgColor: '#ddd'}), el)
 
